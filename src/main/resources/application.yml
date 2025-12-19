@@ -1,0 +1,26 @@
+# src/main/resources/application.yml (updated for JWT)
+server:
+  port: 8080
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # Choose one of issuer-uri or jwk-set-uri
+          issuer-uri: https://your-issuer.example.com/realms/demo
+          # jwk-set-uri: https://your-issuer.example.com/realms/demo/protocol/openid-connect/certs
+
+app:
+  s3:
+    enabled: false
+    bucket: arn:aws:s3:::gw-camel-demo
+    region: us-east-2
+    endpoint: http://localhost:4566
+
+logging:
+  level:
+    root: INFO
+    com.gw_camel_integration: DEBUG
